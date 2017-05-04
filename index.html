@@ -6,6 +6,8 @@
     
     <style type="text/css">
         body { padding-top: 70px; }
+        
+        th {text-align: center;}
     </style>
 
 </head>
@@ -50,32 +52,74 @@
     
     <div class="container">
         
-        <div id="app">    
-            <table class="table table-hover">
-                  <thead>
-                      <tr>
-                          <th>To</th>
-                          <th>From</th>
-                          <th>Channel</th>
-                          <th>Date</th>
-                          <th>Description</th>
-                          <th>Brilliant</th>
-                          <th>Hardworking</th>
-                          <th>Kind</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr v-for="kudo in kudos">
-                          <td>{{ kudo.to }}</td>
-                          <td>{{ kudo.from }}</td>
-                          <td>{{ kudo.channel }}</td>
-                          <td>{{ kudo.date }}</td>
-                          <td>{{ kudo.description }}</td>
-                          <td>{{ kudo.value_points.brilliant }}</td>
-                          <td>{{ kudo.value_points.hardworking }}</td>
-                          <td>{{ kudo.value_points.kind }}</td>
-                      </tr>
-                  </tbody>
+        <div id="app">  
+             
+            <table class="table"> 
+                <tr>
+                    <td>
+                        <table class="table table-hover">
+                              <thead>
+                                  <tr>
+                                      <th>🎓</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr v-for="kudo in kudos">
+                                      <td>{{ kudo.to }}</td>
+                                      <td>{{ kudo.from }}</td>
+                                      <td>{{ kudo.channel }}</td>
+                                      <td>{{ kudo.date }}</td>
+                                      <td>{{ kudo.description }}</td>
+                                      <td>{{ kudo.value_points.brilliant }}</td>
+                                      <td>{{ kudo.value_points.hardworking }}</td>
+                                      <td>{{ kudo.value_points.kind }}</td>
+                                  </tr>
+                              </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="table table-hover">
+                              <thead>
+                                  <tr>
+                                      <th>💪</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr v-for="kudo in kudos">
+                                      <td>{{ kudo.to }}</td>
+                                      <td>{{ kudo.from }}</td>
+                                      <td>{{ kudo.channel }}</td>
+                                      <td>{{ kudo.date }}</td>
+                                      <td>{{ kudo.description }}</td>
+                                      <td>{{ kudo.value_points.brilliant }}</td>
+                                      <td>{{ kudo.value_points.hardworking }}</td>
+                                      <td>{{ kudo.value_points.kind }}</td>
+                                  </tr>
+                              </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="table table-hover">
+                              <thead>
+                                  <tr>
+                                      <th>❤️</th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                  <tr v-for="kudo in kudos">
+                                      <td>{{ kudo.to }}</td>
+                                      <td>{{ kudo.from }}</td>
+                                      <td>{{ kudo.channel }}</td>
+                                      <td>{{ kudo.date }}</td>
+                                      <td>{{ kudo.description }}</td>
+                                      <td>{{ kudo.value_points.brilliant }}</td>
+                                      <td>{{ kudo.value_points.hardworking }}</td>
+                                      <td>{{ kudo.value_points.kind }}</td>
+                                  </tr>
+                              </tbody>
+                        </table>
+                    </td>
+                </tr>
             </table>
         </div> <!--id=app-->
        
