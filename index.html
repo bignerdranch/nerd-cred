@@ -69,29 +69,29 @@
         
         <div id="app">    
             <table class="table table-hover">
-                  <thead> 
-                      <tr> 
-                          <th>To</th> 
-                          <th>From</th> 
-                          <th>Channel</th> 
-                          <th>Date</th> 
-                          <th>Description</th> 
-                          <th>Brilliant</th> 
-                          <th>Hardworking</th> 
-                          <th>Kind</th> 
-                      </tr> 
-                  </thead> 
-                  <tbody> 
-                      <tr v-for="kudo in kudos"> 
-                          <td>{{ kudo.to }}</td> 
-                          <td>{{ kudo.from }}</td> 
-                          <td>{{ kudo.channel }}</td> 
-                          <td>{{ kudo.date }}</td> 
-                          <td>{{ kudo.description }}</td> 
-                          <td>3</td> 
-                          <td>0</td> 
-                          <td>1</td> 
-                      </tr> 
+                  <thead>
+                      <tr>
+                          <th>To</th>
+                          <th>From</th>
+                          <th>Channel</th>
+                          <th>Date</th>
+                          <th>Description</th>
+                          <th>Brilliant</th>
+                          <th>Hardworking</th>
+                          <th>Kind</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr v-for="kudo in kudos">
+                          <td>{{ kudo.to }}</td>
+                          <td>{{ kudo.from }}</td>
+                          <td>{{ kudo.channel }}</td>
+                          <td>{{ kudo.date }}</td>
+                          <td>{{ kudo.description }}</td>
+                          <td>3</td>
+                          <td>0</td>
+                          <td>1</td>
+                      </tr>
                   </tbody>
             </table>
         </div> <!--id=app-->
@@ -107,25 +107,23 @@
     
     <script src="https://unpkg.com/vue"></script>
     
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
+
     <script>
         var app = new Vue({
           el: '#app',
+          mounted: function() {
+            this.$nextTick(function() {
+              this.$http.get('https://bnr-emobot.herokuapp.com/kudos').then(response => {
+                this.$set(this.$data, 'kudos', response.body.data);
+              }, response => {
+                console.log(response);
+              });
+            });
+          },
           data: {
-            "kudos": [
-                    {
-                        "channel": "caption-call-internal",
-                        "date": "2015-03-25T12:00:00Z",
-                        "description": "for client wrangling",
-                        "from": "kristin",
-                        "to": "caitlin",
-                        "value-points": {
-                        "brilliant": 3,
-                        "hardworking": 0,
-                        "kind": 1
-                        }
-                    }
-                ],
-            }
+            "kudos": [],
+          }
         })
     </script>
     
