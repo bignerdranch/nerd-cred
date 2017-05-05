@@ -242,7 +242,7 @@
                                     <i class="glyphicon glyphicon-stats fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">120</div>
+                                    <div class="huge">{{ total_kudos.brilliant + total_kudos.hardworking + total_kudos.kind }}</div>
                                     <div>Total Score</div>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@
                                     <i class="glyphicon glyphicon-education fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">40</div>
+                                    <div class="huge">{{ total_kudos.brilliant }}</div>
                                     <div>Brilliant</div>
                                 </div>
                             </div>
@@ -286,7 +286,7 @@
                                     <i class="fa fa-thumbs-up fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">20</div>
+                                    <div class="huge">{{ total_kudos.hardworking }}</div>
                                     <div>Hardworking</div>
                                 </div>
                             </div>
@@ -308,7 +308,7 @@
                                     <i class="fa fa-heart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">60</div>
+                                    <div class="huge">{{ total_kudos.kind }}</div>
                                     <div>Kind</div>
                                 </div>
                             </div>
@@ -549,10 +549,17 @@
           el: '#app',
           mounted: function() {
             this.$nextTick(function() {
+              // get leaderboard data
               this.$http.get('https://bnr-emobot.herokuapp.com/leaderboard').then(response => {
                 this.$set(this.$data, 'brilliant', response.body.data.brilliant);
                 this.$set(this.$data, 'hardworking', response.body.data.hardworking);
                 this.$set(this.$data, 'kind', response.body.data.kind);
+              }, response => {
+                console.log(response);
+              });
+              // get "logged in" user's data (Caitlin)
+              this.$http.get('https://bnr-emobot.herokuapp.com/users/caitlin').then(response => {
+                 this.$set(this.$data, 'received', response.body.data.kudos.received);
               }, response => {
                 console.log(response);
               });
@@ -561,15 +568,31 @@
           data: {
             "brilliant": [],
             "hardworking": [],
-            "kind": []
+            "kind": [],
+            "received": [],
           },
           methods: {
               createUserProfileUrl: function (user_name) {
-                  var baseUrl = "http://localhost:3000/pages/profile_scratch.html?user=";
+                  var baseUrl = "./profile.html?user=";
                   baseUrl += encodeURIComponent(user_name);
                   return baseUrl;
               }
           },
+          computed: {
+              total_kudos: function(){
+                var received_totals = {
+                    "brilliant": 40,
+                    "hardworking": 20,
+                    "kind": 60,
+                };
+                return this.received.reduce(function(prev, kudo){
+                    received_totals.brilliant += kudo.value_points.brilliant;
+                    received_totals.hardworking += kudo.value_points.hardworking;
+                    received_totals.kind += kudo.value_points.kind;
+                    return received_totals;
+                },received_totals);
+              }
+          }
         })
     </script>
 
