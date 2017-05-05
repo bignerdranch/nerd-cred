@@ -48,6 +48,7 @@
             <table class="table table-hover">
                   <thead>
                       <tr>
+                          <th></th>
                           <th>From</th>
                           <th>Brilliant</th>
                           <th>Hardworking</th>
@@ -59,6 +60,7 @@
                   <tbody>
                       
                       <tr v-for="kudo in received">
+                          <td><img :src="kudo.from.avatar" width="20px"/></td>
                           <td>{{ kudo.from.user_name }}</td>
                           <td>{{ kudo.value_points.brilliant }}</td>
                           <td>{{ kudo.value_points.hardworking }}</td>
