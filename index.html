@@ -166,18 +166,124 @@
     <script>
         var app = new Vue({
           el: '#app',
-          mounted: function() {
-            this.$nextTick(function() {
-              this.$http.get('https://bnr-emobot.herokuapp.com/kudos').then(response => {
-                this.$set(this.$data, 'kudos', response.body.data);
-              }, response => {
-                console.log(response);
-              });
-            });
-          },
-          data: {
-            "kudos": [],
+        data: {
+            "brilliant": [
+                {
+                    "points": 142,
+                    "rank": 1,
+                    "user": {
+                        "avatar": "https://cdn.example.com/kristin_192.jpg",
+                        "user_name": "kristin"
+                    }
+                },
+                {
+                    "points": 127,
+                    "rank": 2,
+                    "user": {
+                        "avatar": "https://cdn.example.com/caitlin_192.jpg",
+                        "user_name": "caitlin"
+                    }
+                },
+                {
+                    "points": 113,
+                    "rank": 3,
+                    "user": {
+                        "avatar": "https://cdn.example.com/jjustice_192.jpg",
+                        "user_name": "jjustice"
+                    }
+                }
+            ],
+            "hardworking": [
+                {
+                    "points": 142,
+                    "rank": 1,
+                    "user": {
+                        "avatar": "https://cdn.example.com/jjustice_192.jpg",
+                        "user_name": "jjustice"
+                    }
+                },
+                {
+                    "points": 127,
+                    "rank": 2,
+                    "user": {
+                        "avatar": "https://cdn.example.com/caitlin_192.jpg",
+                        "name": "caitlin"
+                    }
+                },
+                {
+                    "points": 113,
+                    "rank": 3,
+                    "user": {
+                        "avatar": "https://cdn.example.com/kristin_192.jpg",
+                        "user_name": "kristin"
+                    }
+                }
+            ],
+            "kind": [
+                {
+                    "points": 142,
+                    "rank": 1,
+                    "user": {
+                        "avatar": "https://cdn.example.com/caitlin_192.jpg",
+                        "user_name": "caitlin"
+                    }
+                },
+                {
+                    "points": 127,
+                    "rank": 2,
+                    "user": {
+                        "avatar": "https://cdn.example.com/kristin_192.jpg",
+                        "user_name": "kristin"
+                    }
+                },
+                {
+                    "points": 113,
+                    "rank": 3,
+                    "user": {
+                        "avatar": "https://cdn.example.com/jjustice_192.jpg",
+                        "user_name": "jjustice"
+                    }
+                }
+            ],
+            "overall": [
+                {
+                    "points": 442,
+                    "rank": 1,
+                    "user": {
+                        "avatar": "https://cdn.example.com/caitlin_192.jpg",
+                        "user_name": "caitlin"
+                    }
+                },
+                {
+                    "points": 327,
+                    "rank": 2,
+                    "user": {
+                        "avatar": "https://cdn.example.com/kristin_192.jpg",
+                        "user_name": "kristin"
+                    }
+                },
+                {
+                    "points": 213,
+                    "rank": 3,
+                    "user": {
+                        "avatar": "https://cdn.example.com/jjustice_192.jpg",
+                        "user_name": "jjustice"
+                    }
+                }
+            ]
           }
+          // mounted: function() {
+//             this.$nextTick(function() {
+//               this.$http.get('https://bnr-emobot.herokuapp.com/kudos').then(response => {
+//                 this.$set(this.$data, 'kudos', response.body.data);
+//               }, response => {
+//                 console.log(response);
+//               });
+//             });
+//           },
+//           data: {
+//             "kudos": [],
+//           }
         })
     </script>
     
