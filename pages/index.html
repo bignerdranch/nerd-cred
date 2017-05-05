@@ -547,6 +547,7 @@
               });
               // get "logged in" user's data (Caitlin)
               this.$http.get('https://bnr-emobot.herokuapp.com/users/caitlin').then(response => {
+                  //todo: uncomment this and delete dummy data once seed data is ready on server
                 //this.$set(this.$data, 'received', response.body.data.kudos.received);
               }, response => {
                 console.log(response);
@@ -557,7 +558,7 @@
             "brilliant": [],
             "hardworking": [],
             "kind": [],
-            "received": [
+            "received": [ //todo: delete dummy data once server is ready
 {
 "channel": "caption-call-internal",
 "description": "great client call",
