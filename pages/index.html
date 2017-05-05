@@ -365,7 +365,11 @@
                                                 <tbody>
                                                     <tr v-for="nerd in brilliant">
                                                         <td>{{ nerd.rank }}</td>
-                                                        <td>{{ nerd.user.user_name }}</td>
+                                                        <td>
+                                                            <a :href="createUserProfileUrl(nerd.user.user_name)">
+                                                                {{ nerd.user.user_name }}
+                                                            </a>
+                                                        </td>
                                                         <td>{{ nerd.points }}</td>
                                                     </tr>
                                                 </tbody>
@@ -425,7 +429,11 @@
                                                 <tbody>
                                                     <tr v-for="nerd in hardworking">
                                                         <td>{{ nerd.rank }}</td>
-                                                        <td>{{ nerd.user.user_name }}</td>
+                                                        <td>
+                                                            <a :href="createUserProfileUrl(nerd.user.user_name)">
+                                                                {{ nerd.user.user_name }}
+                                                            </a>
+                                                        </td>
                                                         <td>{{ nerd.points }}</td>
                                                     </tr>
                                                 </tbody>
@@ -485,7 +493,11 @@
                                                 <tbody>
                                                     <tr v-for="nerd in kind">
                                                         <td>{{ nerd.rank }}</td>
-                                                        <td>{{ nerd.user.user_name }}</td>
+                                                        <td>
+                                                            <a :href="createUserProfileUrl(nerd.user.user_name)">
+                                                                {{ nerd.user.user_name }}
+                                                            </a>
+                                                        </td>
                                                         <td>{{ nerd.points }}</td>
                                                     </tr>
                                                 </tbody>
@@ -559,17 +571,24 @@
             "kind": [],
             "received": [],
           },
+          methods: {
+              createUserProfileUrl: function (user_name) {
+                  var baseUrl = "./profile.html?user=";
+                  baseUrl += encodeURIComponent(user_name);
+                  return baseUrl;
+              }
+          },
           computed: {
               total_kudos: function(){
                 var received_totals = {
-                    "brilliant": 0, 
-                    "hardworking": 0,
-                    "kind": 0,
+                    "brilliant": 40,
+                    "hardworking": 20,
+                    "kind": 60,
                 };
                 return this.received.reduce(function(prev, kudo){
                     received_totals.brilliant += kudo.value_points.brilliant;
                     received_totals.hardworking += kudo.value_points.hardworking;
-                    received_totals.kind += kudo.value_points.kind;                    
+                    received_totals.kind += kudo.value_points.kind;
                     return received_totals;
                 },received_totals);
               }
