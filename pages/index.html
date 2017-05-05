@@ -547,8 +547,7 @@
               });
               // get "logged in" user's data (Caitlin)
               this.$http.get('https://bnr-emobot.herokuapp.com/users/caitlin').then(response => {
-                  //todo: uncomment this and delete dummy data once seed data is ready on server
-                //this.$set(this.$data, 'received', response.body.data.kudos.received);
+                 this.$set(this.$data, 'received', response.body.data.kudos.received);
               }, response => {
                 console.log(response);
               });
@@ -558,30 +557,7 @@
             "brilliant": [],
             "hardworking": [],
             "kind": [],
-            "received": [ //todo: delete dummy data once server is ready
-{
-"channel": "caption-call-internal",
-"description": "great client call",
-"from": "kristin",
-"to": "caitlin",
-"value_points": {
-"brilliant": 3,
-"hardworking": 0,
-"kind": 1
-}
-},
-{
-"channel": "caption-call-internal",
-"description": "great client call",
-"from": "jjustice",
-"to": "caitlin",
-"value_points": {
-"brilliant": 3,
-"hardworking": 0,
-"kind": 1
-}
-}
-],
+            "received": [],
           },
           computed: {
               total_kudos: function(){
