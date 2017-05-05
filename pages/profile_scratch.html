@@ -41,7 +41,60 @@
 
 
         <div id="app">
-            <h1>Profile for: {{ user_name }}</h1>
+            <h1>Profile for {{ user_name }}</h1>
+
+            <h2>Kudos Received:</h2>
+            
+            <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>From</th>
+                          <th>Brilliant</th>
+                          <th>Hardworking</th>
+                          <th>Kind</th>
+                          <th>Description</th>
+                          <th>Channel</th>
+                       </tr>
+                  </thead>
+                  <tbody>
+                      
+                      <tr v-for="kudo in received">
+                          <td>{{ kudo.from.user_name }}</td>
+                          <td>{{ kudo.value_points.brilliant }}</td>
+                          <td>{{ kudo.value_points.hardworking }}</td>
+                          <td>{{ kudo.value_points.kind }}</td>
+                          <td>{{ kudo.description }}</td>
+                          <td>{{ kudo.channel }}</td>
+                      </tr>
+                  </tbody>
+            </table>
+            
+            <h2>Kudos Given:</h2>
+            
+            <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>To</th>
+                          <th>Brilliant</th>
+                          <th>Hardworking</th>
+                          <th>Kind</th>
+                          <th>Description</th>
+                          <th>Channel</th>
+                       </tr>
+                  </thead>
+                  <tbody>
+                      
+                      <tr v-for="kudo in sent">
+                          <td>{{ kudo.to.user_name }}</td>
+                          <td>{{ kudo.value_points.brilliant }}</td>
+                          <td>{{ kudo.value_points.hardworking }}</td>
+                          <td>{{ kudo.value_points.kind }}</td>
+                          <td>{{ kudo.description }}</td>
+                          <td>{{ kudo.channel }}</td>
+                      </tr>
+                  </tbody>
+            </table>
+            
 
         </div> <!-- /#app -->
 
@@ -73,21 +126,28 @@
           el: '#app',
           mounted: function() {
             this.$nextTick(function() {
-                //scrape query param
+                //scrape query param (default value is caitlin)
                 var urlParams = new URLSearchParams(window.location.search);
                 var user_name = urlParams.has('user') ? urlParams.get('user') : 'caitlin'
                 this.$set(this.$data, 'user_name', user_name);
-                //query user based on param
-                var url_string = 'https://bnr-emobot.herokuapp.com/users/' + user_name;
+                
+                //build URL for user's prfile info
+                var url_string = 'https://bnr-emobot.herokuapp.com/users/' + encodeURIComponent(user_name);
                 console.log(url_string);
-              
+                
+                // get user's data 
+                this.$http.get(url_string).then(response => {
+                   this.$set(this.$data, 'received', response.body.data.kudos.received);
+                   this.$set(this.$data, 'sent', response.body.data.kudos.sent);
+                }, response => {
+                  console.log(response);
+                });
             });
           },
           data: {
             "user_name": "",  
-            "brilliant": [],
-            "hardworking": [],
-            "kind": []
+            "received": [],
+            "sent": [],
           }
         })
     </script>
