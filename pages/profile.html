@@ -397,7 +397,9 @@
                 this.$set(this.$data, 'user_name', user_name);
 
                 //build URL for user's prfile info
-                var url_string = 'https://bnr-emobot.herokuapp.com/users/' + encodeURIComponent(user_name);
+                var baseURL = 'https://bnr-emobot.herokuapp.com';
+                // var baseURL = 'http://localhost:8081';
+                var url_string = baseURL + '/users/' + encodeURIComponent(user_name);
                 console.log(url_string);
 
                 // get user's data
