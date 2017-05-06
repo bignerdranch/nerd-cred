@@ -122,8 +122,18 @@
                         <tbody>
 
                             <tr v-for="kudo in kudos" v-cloak>
-                                <td><img :src="kudo.from.avatar" width="20px"/> {{ kudo.from.user_name }}</td>
-                                <td><img :src="kudo.to.avatar" width="20px"/> {{ kudo.to.user_name }}</td>
+                                <td>
+                                  <a :href="createUserProfileUrl(kudo.from.user_name)">
+                                    <img :src="kudo.from.avatar" width="20px"/>
+                                    {{ kudo.from.user_name }}
+                                  </a>
+                                </td>
+                                <td>
+                                  <a :href="createUserProfileUrl(kudo.to.user_name)">
+                                    <img :src="kudo.to.avatar" width="20px"/>
+                                    {{ kudo.to.user_name }}
+                                  </a>
+                                </td>
                                 <td>{{ kudo.value_points.brilliant }}</td>
                                 <td>{{ kudo.value_points.hardworking }}</td>
                                 <td>{{ kudo.value_points.kind }}</td>
@@ -170,16 +180,18 @@
           el: '#app',
           mounted: function() {
             this.$nextTick(function() {
-                //scrape query param (default value is caitlin)
+                //scrape query param (default value is brilliant)
                 var urlParams = new URLSearchParams(window.location.search);
                 var value_name = urlParams.has('value') ? urlParams.get('value') : 'brilliant'
                 this.$set(this.$data, 'value_name', value_name);
 
-                //build URL for user's prfile info
-                var url_string = 'https://bnr-emobot.herokuapp.com/values/' + encodeURIComponent(value_name);
+                //build URL for value kudo list
+                // var baseURL = 'https://bnr-emobot.herokuapp.com';
+                var baseURL = 'http://localhost:8081'
+                var url_string = baseURL + '/values/' + encodeURIComponent(value_name);
                 console.log(url_string);
 
-                // get user's data
+                // get value's data
                 this.$http.get(url_string).then(response => {
                    this.$set(this.$data, 'kudos', response.body.data.kudos);
                 }, response => {
@@ -190,7 +202,14 @@
           data: {
             "value_name": "",
             "kudos": [],
-          }
+          },
+          methods: {
+              createUserProfileUrl: function (user_name) {
+                  var baseUrl = "./profile.html?user=";
+                  baseUrl += encodeURIComponent(user_name);
+                  return baseUrl;
+              }
+          },
         })
     </script>
 

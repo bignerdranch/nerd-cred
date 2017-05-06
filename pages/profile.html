@@ -121,7 +121,12 @@
                         <tbody>
 
                             <tr v-for="kudo in received" v-cloak>
-                                <td><img :src="kudo.from.avatar" width="20px"/> {{ kudo.from.user_name }}</td>
+                                <td>
+                                  <a :href="createUserProfileUrl(kudo.from.user_name)">
+                                    <img :src="kudo.from.avatar" width="20px"/>
+                                    {{ kudo.from.user_name }}
+                                  </a>
+                                </td>
                                 <td>{{ kudo.value_points.brilliant }}</td>
                                 <td>{{ kudo.value_points.hardworking }}</td>
                                 <td>{{ kudo.value_points.kind }}</td>
@@ -217,7 +222,14 @@
             "user_name": "",
             "received": [],
             "sent": [],
-          }
+          },
+          methods: {
+              createUserProfileUrl: function (user_name) {
+                  var baseUrl = "./profile.html?user=";
+                  baseUrl += encodeURIComponent(user_name);
+                  return baseUrl;
+              }
+          },
         })
     </script>
 
