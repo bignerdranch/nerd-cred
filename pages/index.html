@@ -432,8 +432,11 @@
           el: '#app',
           mounted: function() {
             this.$nextTick(function() {
+              // let baseURL = 'https://bnr-emobot.herokuapp.com';
+              let baseURL = 'http://localhost:8081';
+
               // get leaderboard data
-              this.$http.get('https://bnr-emobot.herokuapp.com/leaderboard').then(response => {
+              this.$http.get(baseURL+'/leaderboard').then(response => {
                 this.$set(this.$data, 'brilliant', response.body.data.kudos.brilliant);
                 this.$set(this.$data, 'hardworking', response.body.data.kudos.hardworking);
                 this.$set(this.$data, 'kind', response.body.data.kudos.kind);
@@ -443,7 +446,7 @@
                 console.log(response);
               });
               // get "logged in" user's data (Caitlin)
-              this.$http.get('https://bnr-emobot.herokuapp.com/users/caitlin').then(response => {
+              this.$http.get(baseURL+'/users/caitlin').then(response => {
                  this.$set(this.$data, 'received', response.body.data.kudos.received);
               }, response => {
                 console.log(response);
