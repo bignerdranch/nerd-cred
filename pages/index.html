@@ -300,6 +300,7 @@
                                                         <td>{{ nerd.rank }}</td>
                                                         <td>
                                                             <a :href="createUserProfileUrl(nerd.user.user_name)">
+                                                                <img :src="nerd.user.avatar" width="20px"/>
                                                                 {{ nerd.user.user_name }}
                                                             </a>
                                                         </td>
@@ -363,9 +364,10 @@
                                                     <tr v-for="nerd in kind" v-cloak>
                                                         <td>{{ nerd.rank }}</td>
                                                         <td>
-                                                            <a :href="createUserProfileUrl(nerd.user.user_name)">
-                                                                {{ nerd.user.user_name }}
-                                                            </a>
+                                                          <a :href="createUserProfileUrl(nerd.user.user_name)">
+                                                              <img :src="nerd.user.avatar" width="20px"/>
+                                                              {{ nerd.user.user_name }}
+                                                          </a>
                                                         </td>
                                                         <td>{{ nerd.points }}</td>
                                                     </tr>
