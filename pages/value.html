@@ -105,9 +105,9 @@
             <!-- /.row -->
             <div class="row">
               <div id="app">
-                  <h1 class="page-header">Value <span v-cloak>{{ value_name }}</span></h1>
+                  <h1 class="page-header">Value <span v-cloak>{{ value_name[0].toUpperCase() + value_name.slice(1) }}</span></h1>
 
-                  <h2>Kudos Sent:</h2>
+                  <h2>Company-Wide Kudos:</h2>
 
                   <table class="table table-hover">
                         <thead>
@@ -126,13 +126,13 @@
                             <tr v-for="kudo in kudos" v-cloak>
                                 <td>
                                   <a :href="createUserProfileUrl(kudo.from.user_name)">
-                                    <img :src="kudo.from.avatar" width="20px"/>
+                                    <img :src="kudo.from.avatar" width="20px" class="img-circle" />
                                     {{ kudo.from.user_name }}
                                   </a>
                                 </td>
                                 <td>
                                   <a :href="createUserProfileUrl(kudo.to.user_name)">
-                                    <img :src="kudo.to.avatar" width="20px"/>
+                                    <img :src="kudo.to.avatar" width="20px" class="img-circle"/>
                                     {{ kudo.to.user_name }}
                                   </a>
                                 </td>
