@@ -103,9 +103,100 @@
             <!-- /.row -->
             <div class="row">
               <div id="app">
-                  <h1 class="page-header">Profile <span v-cloak>for {{ user_name }}</span></h1>
+                  <h1 class="page-header"><span v-cloak><img :src="user_avatar" width="100px" class="img-circle"/>  {{ user_name }}</span></h1>
 
                   <h2>Kudos Received:</h2>
+                  
+                  <div class="row">
+                      <div class="col-lg-3 col-md-6">
+                          <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                  <div class="row">
+                                      <div class="col-xs-3">
+                                          <i class="glyphicon glyphicon-stats fa-5x"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-right">
+                                          <div class="huge" v-cloak>{{ received_totals.overall }}</div>
+                                          <div>Total Score</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <a href="#">
+                                  <div class="panel-footer">
+                                      <span class="pull-left">View Details</span>
+                                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                          <div class="panel panel-green">
+                              <div class="panel-heading">
+                                  <div class="row">
+                                      <div class="col-xs-3">
+                                          <i class="glyphicon glyphicon-education fa-5x"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-right">
+                                          <div class="huge" v-cloak>{{ received_totals.brilliant }}</div>
+                                          <div>Brilliant</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <a href="./value.html?value=brilliant">
+                                  <div class="panel-footer">
+                                      <span class="pull-left">View Details</span>
+                                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                          <div class="panel panel-yellow">
+                              <div class="panel-heading">
+                                  <div class="row">
+                                      <div class="col-xs-3">
+                                          <i class="fa fa-thumbs-up fa-5x"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-right">
+                                          <div class="huge" v-cloak>{{ received_totals.hardworking }}</div>
+                                          <div>Hardworking</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <a href="./value.html?value=hardworking">
+                                  <div class="panel-footer">
+                                      <span class="pull-left">View Details</span>
+                                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                          <div class="panel panel-red">
+                              <div class="panel-heading">
+                                  <div class="row">
+                                      <div class="col-xs-3">
+                                          <i class="fa fa-heart fa-5x"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-right">
+                                          <div class="huge" v-cloak>{{ received_totals.kind }}</div>
+                                          <div>Kind</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <a href="./value.html?value=kind">
+                                  <div class="panel-footer">
+                                      <span class="pull-left">View Details</span>
+                                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
 
                   <table class="table table-hover">
                         <thead>
@@ -123,7 +214,7 @@
                             <tr v-for="kudo in received" v-cloak>
                                 <td>
                                   <a :href="createUserProfileUrl(kudo.from.user_name)">
-                                    <img :src="kudo.from.avatar" width="20px"/>
+                                    <img :src="kudo.from.avatar" width="20px" class="img-circle"/>
                                     {{ kudo.from.user_name }}
                                   </a>
                                 </td>
@@ -137,6 +228,96 @@
                   </table>
 
                   <h2>Kudos Given:</h2>
+                  <div class="row">
+                      <div class="col-lg-3 col-md-6">
+                          <div class="panel panel-primary">
+                              <div class="panel-heading">
+                                  <div class="row">
+                                      <div class="col-xs-3">
+                                          <i class="glyphicon glyphicon-stats fa-5x"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-right">
+                                          <div class="huge" v-cloak>{{ sent_totals.overall }}</div>
+                                          <div>Total Score</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <a href="#">
+                                  <div class="panel-footer">
+                                      <span class="pull-left">View Details</span>
+                                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                          <div class="panel panel-green">
+                              <div class="panel-heading">
+                                  <div class="row">
+                                      <div class="col-xs-3">
+                                          <i class="glyphicon glyphicon-education fa-5x"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-right">
+                                          <div class="huge" v-cloak>{{ sent_totals.brilliant }}</div>
+                                          <div>Brilliant</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <a href="./value.html?value=brilliant">
+                                  <div class="panel-footer">
+                                      <span class="pull-left">View Details</span>
+                                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                          <div class="panel panel-yellow">
+                              <div class="panel-heading">
+                                  <div class="row">
+                                      <div class="col-xs-3">
+                                          <i class="fa fa-thumbs-up fa-5x"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-right">
+                                          <div class="huge" v-cloak>{{ sent_totals.hardworking }}</div>
+                                          <div>Hardworking</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <a href="./value.html?value=hardworking">
+                                  <div class="panel-footer">
+                                      <span class="pull-left">View Details</span>
+                                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                          <div class="panel panel-red">
+                              <div class="panel-heading">
+                                  <div class="row">
+                                      <div class="col-xs-3">
+                                          <i class="fa fa-heart fa-5x"></i>
+                                      </div>
+                                      <div class="col-xs-9 text-right">
+                                          <div class="huge" v-cloak>{{ sent_totals.kind }}</div>
+                                          <div>Kind</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <a href="./value.html?value=kind">
+                                  <div class="panel-footer">
+                                      <span class="pull-left">View Details</span>
+                                      <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
 
                   <table class="table table-hover">
                         <thead>
@@ -152,7 +333,7 @@
                         <tbody>
 
                             <tr v-for="kudo in sent" v-cloak>
-                                <td><img :src="kudo.to.avatar" width="20px"/> {{ kudo.to.user_name }}</td>
+                                <td><img :src="kudo.to.avatar" width="20px" class="img-circle"/> {{ kudo.to.user_name }}</td>
                                 <td>{{ kudo.value_points.brilliant }}</td>
                                 <td>{{ kudo.value_points.hardworking }}</td>
                                 <td>{{ kudo.value_points.kind }}</td>
@@ -211,8 +392,11 @@
 
                 // get user's data
                 this.$http.get(url_string).then(response => {
-                   this.$set(this.$data, 'received', response.body.data.kudos.received);
-                   this.$set(this.$data, 'sent', response.body.data.kudos.sent);
+                   this.$set(this.$data, 'received', response.body.data.kudos.received.kudos);
+                   this.$set(this.$data, 'sent', response.body.data.kudos.sent.kudos);
+                   this.$set(this.$data, 'received_totals', response.body.data.kudos.received.totals);
+                   this.$set(this.$data, 'sent_totals', response.body.data.kudos.sent.totals);
+                   this.$set(this.$data, 'user_avatar', response.body.data.kudos.received.kudos[0].to.avatar);
                 }, response => {
                   console.log(response);
                 });
@@ -222,6 +406,9 @@
             "user_name": "",
             "received": [],
             "sent": [],
+            "received_totals": {},
+            "sent_totals": {},
+            "user_avatar": "images/bnr_logo.jpeg"
           },
           methods: {
               createUserProfileUrl: function (user_name) {
