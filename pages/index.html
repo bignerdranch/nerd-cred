@@ -554,6 +554,10 @@
                 this.$set(this.$data, 'brilliant', response.body.data.kudos.brilliant);
                 this.$set(this.$data, 'hardworking', response.body.data.kudos.hardworking);
                 this.$set(this.$data, 'kind', response.body.data.kudos.kind);
+
+                this.$set(this.$data, 'total_brilliant', response.body.data.totals.brilliant)
+                this.$set(this.$data, 'total_hardworking', response.body.data.totals.hardworking)
+                this.$set(this.$data, 'total_kind', response.body.data.totals.kind)
               }, response => {
                 console.log(response);
               });
@@ -569,6 +573,9 @@
             "brilliant": [],
             "hardworking": [],
             "kind": [],
+            "total_brilliant": 0,
+            "total_hardworking": 0,
+            "total_kind": 0,
             "received": [],
           },
           methods: {
@@ -580,17 +587,11 @@
           },
           computed: {
               total_kudos: function(){
-                var received_totals = {
-                    "brilliant": 40,
-                    "hardworking": 20,
-                    "kind": 60,
+                return {
+                    "brilliant": this.total_brilliant,
+                    "hardworking": this.total_hardworking,
+                    "kind": this.total_kind,
                 };
-                return this.received.reduce(function(prev, kudo){
-                    received_totals.brilliant += kudo.value_points.brilliant;
-                    received_totals.hardworking += kudo.value_points.hardworking;
-                    received_totals.kind += kudo.value_points.kind;
-                    return received_totals;
-                },received_totals);
               }
           }
         })
