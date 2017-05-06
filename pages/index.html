@@ -597,7 +597,7 @@
                           total += this.total_kudos[keys[i]];
                       }
                   }
-                  return total;
+                  return total == 0 ? '' : total;
               }
           }
         })
