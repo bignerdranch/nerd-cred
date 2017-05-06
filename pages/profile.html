@@ -116,7 +116,7 @@
                                           <i class="glyphicon glyphicon-stats fa-5x"></i>
                                       </div>
                                       <div class="col-xs-9 text-right">
-                                          <div class="huge" v-cloak>1</div>
+                                          <div class="huge" v-cloak>{{ received_totals.overall }}</div>
                                           <div>Total Score</div>
                                       </div>
                                   </div>
@@ -138,7 +138,7 @@
                                           <i class="glyphicon glyphicon-education fa-5x"></i>
                                       </div>
                                       <div class="col-xs-9 text-right">
-                                          <div class="huge" v-cloak>2</div>
+                                          <div class="huge" v-cloak>{{ received_totals.brilliant }}</div>
                                           <div>Brilliant</div>
                                       </div>
                                   </div>
@@ -160,7 +160,7 @@
                                           <i class="fa fa-thumbs-up fa-5x"></i>
                                       </div>
                                       <div class="col-xs-9 text-right">
-                                          <div class="huge" v-cloak>3</div>
+                                          <div class="huge" v-cloak>{{ received_totals.hardworking }}</div>
                                           <div>Hardworking</div>
                                       </div>
                                   </div>
@@ -182,7 +182,7 @@
                                           <i class="fa fa-heart fa-5x"></i>
                                       </div>
                                       <div class="col-xs-9 text-right">
-                                          <div class="huge" v-cloak>4</div>
+                                          <div class="huge" v-cloak>{{ received_totals.kind }}</div>
                                           <div>Kind</div>
                                       </div>
                                   </div>
@@ -237,7 +237,7 @@
                                           <i class="glyphicon glyphicon-stats fa-5x"></i>
                                       </div>
                                       <div class="col-xs-9 text-right">
-                                          <div class="huge" v-cloak>1</div>
+                                          <div class="huge" v-cloak>{{ sent_totals.overall }}</div>
                                           <div>Total Score</div>
                                       </div>
                                   </div>
@@ -259,7 +259,7 @@
                                           <i class="glyphicon glyphicon-education fa-5x"></i>
                                       </div>
                                       <div class="col-xs-9 text-right">
-                                          <div class="huge" v-cloak>2</div>
+                                          <div class="huge" v-cloak>{{ sent_totals.brilliant }}</div>
                                           <div>Brilliant</div>
                                       </div>
                                   </div>
@@ -281,7 +281,7 @@
                                           <i class="fa fa-thumbs-up fa-5x"></i>
                                       </div>
                                       <div class="col-xs-9 text-right">
-                                          <div class="huge" v-cloak>3</div>
+                                          <div class="huge" v-cloak>{{ sent_totals.hardworking }}</div>
                                           <div>Hardworking</div>
                                       </div>
                                   </div>
@@ -303,7 +303,7 @@
                                           <i class="fa fa-heart fa-5x"></i>
                                       </div>
                                       <div class="col-xs-9 text-right">
-                                          <div class="huge" v-cloak>4</div>
+                                          <div class="huge" v-cloak>{{ sent_totals.kind }}</div>
                                           <div>Kind</div>
                                       </div>
                                   </div>
@@ -394,6 +394,8 @@
                 this.$http.get(url_string).then(response => {
                    this.$set(this.$data, 'received', response.body.data.kudos.received.kudos);
                    this.$set(this.$data, 'sent', response.body.data.kudos.sent.kudos);
+                   this.$set(this.$data, 'received_totals', response.body.data.kudos.received.totals);
+                   this.$set(this.$data, 'sent_totals', response.body.data.kudos.sent.totals);
                 }, response => {
                   console.log(response);
                 });
@@ -403,6 +405,8 @@
             "user_name": "",
             "received": [],
             "sent": [],
+            "received_totals": {},
+            "sent_totals": {}
           },
           methods: {
               createUserProfileUrl: function (user_name) {
