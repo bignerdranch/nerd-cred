@@ -432,8 +432,10 @@
           el: '#app',
           mounted: function() {
             this.$nextTick(function() { this.loadData(); });
-            setInterval(() => {
-              this.loadData();
+
+            let that = this;
+            setInterval(function() {
+              that.loadData();
             }, 5000);
           },
           data: {
