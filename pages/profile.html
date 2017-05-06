@@ -103,7 +103,7 @@
             <!-- /.row -->
             <div class="row">
               <div id="app">
-                  <h1 class="page-header">Profile <span v-cloak>for {{ user_name }}</span></h1>
+                  <h1 class="page-header"><span v-cloak><img :src="user_avatar" width="100px" class="img-circle"/>  {{ user_name }}</span></h1>
 
                   <h2>Kudos Received:</h2>
                   
@@ -214,7 +214,7 @@
                             <tr v-for="kudo in received" v-cloak>
                                 <td>
                                   <a :href="createUserProfileUrl(kudo.from.user_name)">
-                                    <img :src="kudo.from.avatar" width="20px"/>
+                                    <img :src="kudo.from.avatar" width="20px" class="img-circle"/>
                                     {{ kudo.from.user_name }}
                                   </a>
                                 </td>
@@ -333,7 +333,7 @@
                         <tbody>
 
                             <tr v-for="kudo in sent" v-cloak>
-                                <td><img :src="kudo.to.avatar" width="20px"/> {{ kudo.to.user_name }}</td>
+                                <td><img :src="kudo.to.avatar" width="20px" class="img-circle"/> {{ kudo.to.user_name }}</td>
                                 <td>{{ kudo.value_points.brilliant }}</td>
                                 <td>{{ kudo.value_points.hardworking }}</td>
                                 <td>{{ kudo.value_points.kind }}</td>
@@ -396,6 +396,7 @@
                    this.$set(this.$data, 'sent', response.body.data.kudos.sent.kudos);
                    this.$set(this.$data, 'received_totals', response.body.data.kudos.received.totals);
                    this.$set(this.$data, 'sent_totals', response.body.data.kudos.sent.totals);
+                   this.$set(this.$data, 'user_avatar', response.body.data.kudos.received.kudos[0].to.avatar);
                 }, response => {
                   console.log(response);
                 });
@@ -406,7 +407,8 @@
             "received": [],
             "sent": [],
             "received_totals": {},
-            "sent_totals": {}
+            "sent_totals": {},
+            "user_avatar": "images/bnr_logo.jpeg"
           },
           methods: {
               createUserProfileUrl: function (user_name) {
