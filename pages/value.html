@@ -126,13 +126,13 @@
                             <tr v-for="kudo in kudos" v-cloak>
                                 <td>
                                   <a :href="createUserProfileUrl(kudo.from.user_name)">
-                                    <img :src="kudo.from.avatar" width="20px"/>
+                                    <img :src="kudo.from.avatar" width="20px" class="img-circle" />
                                     {{ kudo.from.user_name }}
                                   </a>
                                 </td>
                                 <td>
                                   <a :href="createUserProfileUrl(kudo.to.user_name)">
-                                    <img :src="kudo.to.avatar" width="20px"/>
+                                    <img :src="kudo.to.avatar" width="20px" class="img-circle"/>
                                     {{ kudo.to.user_name }}
                                   </a>
                                 </td>
