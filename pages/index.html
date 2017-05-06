@@ -556,7 +556,7 @@
           mounted: function() {
             this.$nextTick(function() {
               // get leaderboard data
-              this.$http.get('http://localhost:8081/leaderboard').then(response => {
+              this.$http.get('https://bnr-emobot.herokuapp.com/leaderboard').then(response => {
                 this.$set(this.$data, 'brilliant', response.body.data.kudos.brilliant);
                 this.$set(this.$data, 'hardworking', response.body.data.kudos.hardworking);
                 this.$set(this.$data, 'kind', response.body.data.kudos.kind);
