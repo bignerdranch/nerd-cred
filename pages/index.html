@@ -432,6 +432,9 @@
           el: '#app',
           mounted: function() {
             this.$nextTick(function() { this.loadData(); });
+            setInterval(() => {
+              this.loadData();
+            }, 5000);
           },
           data: {
             "brilliant": [],
