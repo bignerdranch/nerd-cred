@@ -555,9 +555,7 @@
                 this.$set(this.$data, 'hardworking', response.body.data.kudos.hardworking);
                 this.$set(this.$data, 'kind', response.body.data.kudos.kind);
 
-                this.$set(this.$data, 'total_brilliant', response.body.data.totals.brilliant)
-                this.$set(this.$data, 'total_hardworking', response.body.data.totals.hardworking)
-                this.$set(this.$data, 'total_kind', response.body.data.totals.kind)
+                this.$set(this.$data, 'total_kudos', response.body.data.totals);
               }, response => {
                 console.log(response);
               });
@@ -573,9 +571,7 @@
             "brilliant": [],
             "hardworking": [],
             "kind": [],
-            "total_brilliant": 0,
-            "total_hardworking": 0,
-            "total_kind": 0,
+            "total_kudos": [],
             "received": [],
           },
           methods: {
@@ -583,15 +579,6 @@
                   var baseUrl = "./profile.html?user=";
                   baseUrl += encodeURIComponent(user_name);
                   return baseUrl;
-              }
-          },
-          computed: {
-              total_kudos: function(){
-                return {
-                    "brilliant": this.total_brilliant,
-                    "hardworking": this.total_hardworking,
-                    "kind": this.total_kind,
-                };
               }
           }
         })
