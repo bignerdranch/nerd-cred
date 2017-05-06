@@ -98,7 +98,7 @@
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
-            
+
         </nav>
 
         <div id="page-wrapper">
@@ -136,9 +136,9 @@
                                     {{ kudo.to.user_name }}
                                   </a>
                                 </td>
-                                <td><span class="label label-success"><i class="glyphicon glyphicon-education fa-1x"></i> {{ kudo.value_points.brilliant }}</span></td>
-                                <td><span class="label label-warning"><i class="fa fa-thumbs-up fa-1x"></i> {{ kudo.value_points.hardworking }}</span></td>
-                                <td><span class="label label-danger"><i class="fa fa-heart fa-1x"></i> {{ kudo.value_points.kind }}</span></td>
+                                <td><span class="label label-success" v-if="kudo.value_points.brilliant > 0"><i class="glyphicon glyphicon-education fa-1x"></i> {{ kudo.value_points.brilliant }}</span></td>
+                                <td><span class="label label-warning" v-if="kudo.value_points.hardworking > 0"><i class="fa fa-thumbs-up fa-1x"></i> {{ kudo.value_points.hardworking }}</span></td>
+                                <td><span class="label label-danger" v-if="kudo.value_points.kind > 0"><i class="fa fa-heart fa-1x"></i> {{ kudo.value_points.kind }}</span></td>
                                 <td>{{ kudo.description }}</td>
                                 <td>{{ kudo.channel }}</td>
                             </tr>
