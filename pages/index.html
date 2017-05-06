@@ -26,6 +26,12 @@
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -242,7 +248,7 @@
                                     <i class="glyphicon glyphicon-stats fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{ total_kudos.brilliant + total_kudos.hardworking + total_kudos.kind }}</div>
+                                    <div class="huge" v-cloak>{{ total_kudos.brilliant + total_kudos.hardworking + total_kudos.kind }}</div>
                                     <div>Total Score</div>
                                 </div>
                             </div>
@@ -264,7 +270,7 @@
                                     <i class="glyphicon glyphicon-education fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{ total_kudos.brilliant }}</div>
+                                    <div class="huge" v-cloak>{{ total_kudos.brilliant }}</div>
                                     <div>Brilliant</div>
                                 </div>
                             </div>
@@ -286,7 +292,7 @@
                                     <i class="fa fa-thumbs-up fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{ total_kudos.hardworking }}</div>
+                                    <div class="huge" v-cloak>{{ total_kudos.hardworking }}</div>
                                     <div>Hardworking</div>
                                 </div>
                             </div>
@@ -308,7 +314,7 @@
                                     <i class="fa fa-heart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">{{ total_kudos.kind }}</div>
+                                    <div class="huge" v-cloak>{{ total_kudos.kind }}</div>
                                     <div>Kind</div>
                                 </div>
                             </div>
@@ -363,7 +369,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr v-for="nerd in brilliant">
+                                                    <tr v-for="nerd in brilliant" v-cloak>
                                                         <td>{{ nerd.rank }}</td>
                                                         <td>
                                                             <a :href="createUserProfileUrl(nerd.user.user_name)">
@@ -427,7 +433,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr v-for="nerd in hardworking">
+                                                    <tr v-for="nerd in hardworking" v-cloak>
                                                         <td>{{ nerd.rank }}</td>
                                                         <td>
                                                             <a :href="createUserProfileUrl(nerd.user.user_name)">
@@ -491,7 +497,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr v-for="nerd in kind">
+                                                    <tr v-for="nerd in kind" v-cloak>
                                                         <td>{{ nerd.rank }}</td>
                                                         <td>
                                                             <a :href="createUserProfileUrl(nerd.user.user_name)">
