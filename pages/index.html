@@ -248,7 +248,7 @@
                                     <i class="glyphicon glyphicon-stats fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge" v-cloak>{{ total_kudos.brilliant + total_kudos.hardworking + total_kudos.kind }}</div>
+                                    <div class="huge" v-cloak>{{ overall_total_kudos }}</div>
                                     <div>Total Score</div>
                                 </div>
                             </div>
@@ -585,6 +585,19 @@
                   var baseUrl = "./profile.html?user=";
                   baseUrl += encodeURIComponent(user_name);
                   return baseUrl;
+              }
+          },
+          computed: {
+              overall_total_kudos: function() {
+                  let total = 0;
+                  let keys = ["brilliant", "hardworking", "kind"];
+                  for (i in keys) {
+                      let value = this.total_kudos[keys[i]];
+                      if (value) {
+                          total += this.total_kudos[keys[i]];
+                      }
+                  }
+                  return total;
               }
           }
         })
