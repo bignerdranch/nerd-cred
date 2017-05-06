@@ -431,27 +431,7 @@
         var app = new Vue({
           el: '#app',
           mounted: function() {
-            this.$nextTick(function() {
-              let baseURL = 'https://bnr-emobot.herokuapp.com';
-              // let baseURL = 'http://localhost:8081';
-
-              // get leaderboard data
-              this.$http.get(baseURL+'/leaderboard').then(response => {
-                this.$set(this.$data, 'brilliant', response.body.data.kudos.brilliant);
-                this.$set(this.$data, 'hardworking', response.body.data.kudos.hardworking);
-                this.$set(this.$data, 'kind', response.body.data.kudos.kind);
-
-                this.$set(this.$data, 'total_kudos', response.body.data.totals);
-              }, response => {
-                console.log(response);
-              });
-              // get "logged in" user's data (Caitlin)
-              this.$http.get(baseURL+'/users/caitlin').then(response => {
-                 this.$set(this.$data, 'received', response.body.data.kudos.received);
-              }, response => {
-                console.log(response);
-              });
-            });
+            this.$nextTick(function() { this.loadData(); });
           },
           data: {
             "brilliant": [],
@@ -461,6 +441,27 @@
             "received": [],
           },
           methods: {
+              loadData: function () {
+                let baseURL = 'https://bnr-emobot.herokuapp.com';
+                // let baseURL = 'http://localhost:8081';
+
+                // get leaderboard data
+                this.$http.get(baseURL+'/leaderboard').then(response => {
+                  this.$set(this.$data, 'brilliant', response.body.data.kudos.brilliant);
+                  this.$set(this.$data, 'hardworking', response.body.data.kudos.hardworking);
+                  this.$set(this.$data, 'kind', response.body.data.kudos.kind);
+
+                  this.$set(this.$data, 'total_kudos', response.body.data.totals);
+                }, response => {
+                  console.log(response);
+                });
+                // get "logged in" user's data (Caitlin)
+                this.$http.get(baseURL+'/users/caitlin').then(response => {
+                   this.$set(this.$data, 'received', response.body.data.kudos.received);
+                }, response => {
+                  console.log(response);
+                });
+              },
               createUserProfileUrl: function (user_name) {
                   var baseUrl = "./profile.html?user=";
                   baseUrl += encodeURIComponent(user_name);
