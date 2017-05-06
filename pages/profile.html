@@ -218,9 +218,9 @@
                                     {{ kudo.from.user_name }}
                                   </a>
                                 </td>
-                                <td>{{ kudo.value_points.brilliant }}</td>
-                                <td>{{ kudo.value_points.hardworking }}</td>
-                                <td>{{ kudo.value_points.kind }}</td>
+                                <td><span class="label label-success"><i class="glyphicon glyphicon-education fa-1x"></i> {{ kudo.value_points.brilliant }}</span></td>
+                                <td><span class="label label-warning"><i class="fa fa-thumbs-up fa-1x"></i> {{ kudo.value_points.hardworking }}</span></td>
+                                <td><span class="label label-danger"><i class="fa fa-heart fa-1x"></i> {{ kudo.value_points.kind }}</span></td>
                                 <td>{{ kudo.description }}</td>
                                 <td>{{ kudo.channel }}</td>
                             </tr>
@@ -334,9 +334,9 @@
 
                             <tr v-for="kudo in sent" v-cloak>
                                 <td><img :src="kudo.to.avatar" width="20px" class="img-circle"/> {{ kudo.to.user_name }}</td>
-                                <td>{{ kudo.value_points.brilliant }}</td>
-                                <td>{{ kudo.value_points.hardworking }}</td>
-                                <td>{{ kudo.value_points.kind }}</td>
+                                <td><span class="label label-success"><i class="glyphicon glyphicon-education fa-1x"></i> {{ kudo.value_points.brilliant }}</span></td>
+                                <td><span class="label label-warning"><i class="fa fa-thumbs-up fa-1x"></i> {{ kudo.value_points.hardworking }}</span></td>
+                                <td><span class="label label-danger"><i class="fa fa-heart fa-1x"></i> {{ kudo.value_points.kind }}</span></td>
                                 <td>{{ kudo.description }}</td>
                                 <td>{{ kudo.channel }}</td>
                             </tr>
