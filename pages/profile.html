@@ -23,6 +23,12 @@
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -224,7 +230,7 @@
             <!-- /.row -->
             <div class="row">
               <div id="app">
-                  <h1 class="page-header">Profile for {{ user_name }}</h1>
+                  <h1 class="page-header">Profile <span v-cloak>for {{ user_name }}</span></h1>
 
                   <h2>Kudos Received:</h2>
 
@@ -241,7 +247,7 @@
                         </thead>
                         <tbody>
 
-                            <tr v-for="kudo in received">
+                            <tr v-for="kudo in received" v-cloak>
                                 <td><img :src="kudo.from.avatar" width="20px"/> {{ kudo.from.user_name }}</td>
                                 <td>{{ kudo.value_points.brilliant }}</td>
                                 <td>{{ kudo.value_points.hardworking }}</td>
@@ -267,7 +273,7 @@
                         </thead>
                         <tbody>
 
-                            <tr v-for="kudo in sent">
+                            <tr v-for="kudo in sent" v-cloak>
                                 <td><img :src="kudo.to.avatar" width="20px"/> {{ kudo.to.user_name }}</td>
                                 <td>{{ kudo.value_points.brilliant }}</td>
                                 <td>{{ kudo.value_points.hardworking }}</td>
