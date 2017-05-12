@@ -52,7 +52,7 @@
     ga('send', 'pageview');
 
   </script>
-  
+
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -457,8 +457,8 @@
           },
           methods: {
               loadData: function () {
-                // let baseURL = 'https://bnr-emobot.herokuapp.com';
-                let baseURL = 'http://localhost:8081';
+                let baseURL = 'https://bnr-emobot.herokuapp.com';
+                // let baseURL = 'http://localhost:8081';
 
                 // get leaderboard data
                 this.$http.get(baseURL+'/leaderboard').then(response => {
